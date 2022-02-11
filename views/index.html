@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Liquid SCSS to CSS</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+
+    <main>
+      <h1>Liquid SCSS to CSS</h1>
+      <p>Turn your style.scss.liquid into style.css.liquid. Why? Shopify has <a href="https://www.shopify.com.au/partners/blog/deprecating-sass" target="_blank">deprecated Sass</a> and SCSS within their Themes.</p>
+      <div class="compile-container">
+        <textarea id="input" placeholder="Liquid SCSS here"></textarea>
+          <div class="btn-wrapper">
+            <button id="compiler">COMPILE</button>
+            <button id="minifier">MINIFY</button>
+          </div>
+        <textarea id="output"></textarea>
+      </div>
+    </main>
+
+    <script src="main.js" async defer></script>
+  </body>
+</html>

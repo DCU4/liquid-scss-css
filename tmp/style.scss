@@ -1,0 +1,7 @@
+.classname {
+  // note the extra set of double quotes
+  // background-image: url(#{'"{{ \'awesome-hero-image.jpg\' | asset_url }}"'});
+  p {
+    background-color: #{'"{{ setting.background_color }}"'};
+  }
+}
