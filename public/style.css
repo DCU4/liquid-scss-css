@@ -5,7 +5,7 @@
 
 body {
   font-family: 'Avenir', sans-serif;
-  background-color: lightcoral;
+  background-color: #DDD;
   color: #444;
   /* animation: fun 15s ease infinite; */
 }
@@ -41,7 +41,7 @@ h1,p {
 button {
   border: none;
   background-color: #444;
-  color: white;
+  color: #DDD;
   padding: 1.5em;
   cursor: pointer;
   min-width: 150px;
@@ -50,7 +50,7 @@ button {
 textarea {
   padding: 1em;
   background-color: #444;
-  color: #fff;
+  color: #DDD;
   font-family: monospace;
 }
 
