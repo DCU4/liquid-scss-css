@@ -15,18 +15,19 @@ main {
 }
 
 main textarea {
-  width: 40vw;
+  width: 45vw;
   height: 60vh;
-  /* margin: 0 auto;; */
 }
 
 h1,p {
-  margin-bottom: 1.5em;
+  margin-bottom: 1em;
 }
 
+
 .compile-container {
+  padding: 1em 0;
   display: flex;
-  gap: 4em;
+  gap: 2em;
   justify-content: center;
   align-items: center;
 }
