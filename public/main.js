@@ -1,5 +1,6 @@
 const baseUrl = 'https://liquid-scss-css.herokuapp.com';
-// const baseUrl = 'http://localhost:8081'
+// const baseUrl = 'http://localhost:8081';
+
 const compileBtn = document.querySelector('button#compiler');
 compileBtn.addEventListener('click', () => {
   gulpAction('compile', compileBtn);
@@ -9,7 +10,6 @@ const minifyBtn = document.querySelector('button#minifier');
 minifyBtn.addEventListener('click', () => {
   gulpAction('minify', minifyBtn);
 });
-
 
 const gulpAction = (action, btn) => {
   const input = document.querySelector('#input');
@@ -28,7 +28,7 @@ const gulpAction = (action, btn) => {
     },
   })
   .then(res => {
-    return res.json()
+    return res.json();
   })
   .then(data => {
     const output = document.querySelector('#output');
