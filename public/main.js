@@ -1,3 +1,5 @@
+const baseUrl = 'https://liquid-scss-css.herokuapp.com';
+// const baseUrl = 'http://localhost:8081'
 const compileBtn = document.querySelector('button#compiler');
 compileBtn.addEventListener('click', () => {
   gulpAction('compile', compileBtn);
@@ -18,7 +20,7 @@ const gulpAction = (action, btn) => {
   } else {
     btn.innerText = 'MINIFYING...';
   }
-  fetch(`http://localhost:8081/${action}`, {
+  fetch(`${baseUrl}/${action}`, {
     method: 'POST',
     body: JSON.stringify(data),
     headers: {
