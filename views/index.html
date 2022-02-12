@@ -17,19 +17,18 @@
     <p>Turn your style.scss.liquid into style.css.liquid. Why? Shopify has <a
         href="https://www.shopify.com.au/partners/blog/deprecating-sass" target="_blank">deprecated Sass</a> and SCSS
       within their Themes.</p>
-    <p>Use the Sass built in method for escaping strings before pasting in your code.</p>
-    <code>#{' ... '}</code>
+    <p>Escape any strings pointing to a URL like this: <code>background-image: url( {{ \'awesome-hero-image.jpg\' | asset_url }} );</code></p>
+    
     <div class="compile-container">
       <textarea id="input" placeholder="Liquid SCSS here">
 .classname {
-  // note the extra set of double quotes for URLs
-  background-image: url(#{'"{{ \'awesome-hero-image.jpg\' | asset_url }}"'});
+  background-image: url( {{ \'awesome-hero-image.jpg\' | asset_url }} );
 
   p {
-    background-color: #{'"{{ setting.background_color }}"'};
+    background-color: {{ setting.background_color }};
 
     span {
-      color: blue;
+      color: green;
     }
   }
 }
