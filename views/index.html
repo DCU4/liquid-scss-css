@@ -17,7 +17,7 @@
     <p>Turn your style.scss.liquid into style.css.liquid. Why? Shopify has <a
         href="https://www.shopify.com.au/partners/blog/deprecating-sass" target="_blank">deprecated Sass</a> and SCSS
       within their Themes.</p>
-    <p>Escape any strings pointing to a URL like this: <code>background-image: url( {{ \'awesome-hero-image.jpg\' | asset_url }} );</code></p>
+    <p>Escape any strings pointing to a URL like this: <code>background-image: url( {{ \'awesome-hero-image.jpg\' | asset_url }} );</code> This is required to minify code.</p>
     
     <div class="compile-container">
       <textarea id="input" placeholder="Liquid SCSS here">
