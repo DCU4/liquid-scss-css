@@ -7,6 +7,7 @@ body {
   font-family: 'Avenir', sans-serif;
   background-color: #DDD;
   color: #444;
+  overflow: hidden;
   /* animation: fun 15s ease infinite; */
 }
 
@@ -19,7 +20,11 @@ main textarea {
   height: 60vh;
 }
 
-h1,p {
+h1 {
+  margin-bottom: .5em;
+}
+
+p {
   margin-bottom: 1em;
 }
 
