@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const http = require('http').createServer(app);
+const fs = require('fs');
 
 app.use(express.static(__dirname + '/public')); // js, css, images
 app.use(express.json());
@@ -18,71 +19,53 @@ app.get('/', (req, res) => {
 
 app.post('/compile', function (req, res) {
   const input = req.body.input;
-  const fs = require('fs');
-  fs.writeFile('./tmp/style.scss', input, err => {
+  // parse input and add quotes and sass escape
+  const output = input.replace(/\{{/g, '#{\'"{{').replace(/\}}/g,'}}"\'}');
+
+  fs.writeFile('./tmp/style.scss', output, err => {
     if (err) {
       console.error('writeFile err', err)
       return
     }
     //file written successfully
-    const exec = require('child_process').exec;
-    exec(`gulp compilesass`, function (error, stdout, stderr) {
-      if (error) {
-        console.log('exec error', error)
-      } else {
-        fs.readFile('./tmp/style.css.liquid', 'utf-8', (err, data) => {
-          if (err) {
-            console.error('readFile error', err)
-            return
-          }
-          // send to output
-          res.json({ data: data });
-        })
-      }
-    });
+    gulpAction('compilesass', res);
   });
 });
 
 
 app.post('/minify', function (req, res) {
   const input = req.body.input;
-  const fs = require('fs');
-  fs.writeFile('./tmp/style.scss', input, err => {
+  const output = input.replace(/\{{/g, '#{\'"{{').replace(/\}}/g,'}}"\'}');
+  
+  fs.writeFile('./tmp/style.scss', output, err => {
     if (err) {
       console.error('writeFile err', err)
       return
     }
     //file written successfully
-    const exec = require('child_process').exec;
-    exec(`gulp minifysass`, function (error, stdout, stderr) {
-      if (error) {
-        console.log('exec error', error)
-      } else {
-        fs.readFile('./tmp/style.css.liquid', 'utf-8', (err, data) => {
-          if (err) {
-            console.error('readFile error', err)
-            return
-          }
-          // send to output
-          res.json({ data: data });
-        })
-      }
-    });
+    gulpAction('minifysass', res);
   });
 });
 
 
 
-// function runScript(script) {
-//   var exec = require('child_process').exec;
-//   exec(`gulp ${script}`, function (error, stdout, stderr) {
-//     if (error) {
-//       console.log('errorororor', error)
-//     } else {
-//       console.log('stdout: ' + stdout);
-//     }
-//   });
-// }
+const gulpAction = (script, res) => {
+  const exec = require('child_process').exec;
+  exec(`gulp ${script}`, function (error, stdout, stderr) {
+    if (error) {
+      console.log('errorororor', error)
+    } else {
+      fs.readFile('./tmp/style.css.liquid', 'utf-8', (err, data) => {
+        if (err) {
+          console.error('readFile error', err)
+          return
+        }
+        // send to output
+        res.json({ data: data });
+      })
+    }
+  });
+}
 
 
 
