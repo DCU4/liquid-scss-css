@@ -9,3 +9,4 @@ https://liquid-scss-css.herokuapp.com/
       
 ## TODO
 - ~Maybe set it up so users dont even need to double quote the SCSS~
+- Set it up to work with commens, if statements, and other liquid
