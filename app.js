@@ -4,8 +4,8 @@ const http = require('http').createServer(app);
 const fs = require('fs');
 
 app.use(express.static(__dirname + '/public')); // js, css, images
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({limit: '50mb'}));
+app.use(express.urlencoded({ extended: true , limit: '50mb'}));
 
 app.get('/', (req, res) => {
   if (res.statusCode === 200) {
@@ -21,7 +21,6 @@ app.post('/compile', function (req, res) {
   const input = req.body.input;
   // parse input and add quotes and sass escape
   const output = input.replace(/\{{/g, '#{\'"{{').replace(/\}}/g,'}}"\'}');
-
   fs.writeFile('./tmp/style.scss', output, err => {
     if (err) {
       console.error('writeFile err', err)
