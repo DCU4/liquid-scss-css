@@ -18,7 +18,11 @@ gulp.task('compilesass', function() {
 		.pipe(replace('"{{', '{{'))
 		.pipe(replace('}}"', '}}'))
 		// save the file to the theme assets directory
-		.pipe(gulp.dest('./tmp/'));
+		.pipe(gulp.dest('./tmp/'))
+    .on('error',(error) => {
+      console.log('err', error.toString());
+      this.emit('end');
+    });
 });
 
 gulp.task('minifysass', function() {
