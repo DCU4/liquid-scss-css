@@ -27,7 +27,7 @@ app.post('/compile', function (req, res) {
   // process.execPath
   // path.resolve(process.cwd(), /# etc. #/)
 
-  fs.writeFile(path.resolve(process.cwd(), '/temp/style.scss'), output, err => {
+  fs.writeFile(path.resolve(process.cwd(), 'temp', 'style.scss'), output, err => {
     if (err) {
       console.error('writeFile err', err)
       return
