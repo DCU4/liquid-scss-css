@@ -1,4 +1,4 @@
-const baseUrl = 'https://liquid-scss-css.herokuapp.com';
+const baseUrl = 'https://liquid-scss-css.vercel.app/';
 // const baseUrl = 'http://localhost:8081';
 
 const compileBtn = document.querySelector('button#compiler');
