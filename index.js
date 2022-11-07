@@ -24,7 +24,10 @@ app.post('/compile', function (req, res) {
   const input = req.body.input;
   // parse input and add quotes and sass escape
   const output = input.replace(/\{{/g, '#{\'"{{').replace(/\}}/g,'}}"\'}');
-  fs.writeFile(path.join(process.execPath + '/temp/style.scss'), output, err => {
+  // process.execPath
+  // path.resolve(process.cwd(), /# etc. #/)
+
+  fs.writeFile(path.join(__dirname + '/temp/style.scss'), output, err => {
     if (err) {
       console.error('writeFile err', err)
       return
@@ -39,7 +42,7 @@ app.post('/minify', function (req, res) {
   const input = req.body.input;
   const output = input.replace(/\{{/g, '#{\'"{{').replace(/\}}/g,'}}"\'}');
   
-  fs.writeFile(path.join(process.execPath + '/temp/style.scss'), output, err => {
+  fs.writeFile(path.join(__dirname + '/temp/style.scss'), output, err => {
     if (err) {
       console.error('writeFile err', err)
       return
