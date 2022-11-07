@@ -22,7 +22,7 @@ app.post('/compile', function (req, res) {
   const input = req.body.input;
   // parse input and add quotes and sass escape
   const output = input.replace(/\{{/g, '#{\'"{{').replace(/\}}/g,'}}"\'}');
-  fs.writeFile('./tmp/style.scss', output, err => {
+  fs.writeFile(__dirname + '/tmp/style.scss', output, err => {
     if (err) {
       console.error('writeFile err', err)
       return
@@ -37,7 +37,7 @@ app.post('/minify', function (req, res) {
   const input = req.body.input;
   const output = input.replace(/\{{/g, '#{\'"{{').replace(/\}}/g,'}}"\'}');
   
-  fs.writeFile('./tmp/style.scss', output, err => {
+  fs.writeFile(__dirname + '/tmp/style.scss', output, err => {
     if (err) {
       console.error('writeFile err', err)
       return
@@ -55,7 +55,7 @@ const gulpAction = (script, res) => {
     if (error) {
       console.log('errorororor', error)
     } else {
-      fs.readFile('./tmp/style.css.liquid', 'utf-8', (err, data) => {
+      fs.readFile(__dirname + '/tmp/style.css.liquid', 'utf-8', (err, data) => {
         if (err) {
           console.error('readFile error', err)
           return
