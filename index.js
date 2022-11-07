@@ -23,18 +23,20 @@ app.get('/', (req, res) => {
 app.post('/compile', function (req, res) {
   const input = req.body.input;
   // parse input and add quotes and sass escape
-  const output = input.replace(/\{{/g, '#{\'"{{').replace(/\}}/g,'}}"\'}');
+  const parsedInput = input.replace(/\{{/g, '#{\'"{{').replace(/\}}/g,'}}"\'}');
+
+  gulpAction('compilesass', res);
   // process.execPath
   // path.resolve(process.cwd(), /# etc. #/)
 
-  fs.writeFile(path.resolve(process.cwd(), 'temp', 'style.scss'), output, err => {
-    if (err) {
-      console.error('writeFile err', err)
-      return
-    }
-    //file written successfully
-    gulpAction('compilesass', res);
-  });
+  // fs.writeFile(path.resolve(process.cwd(), 'temp', 'style.scss'), output, err => {
+  //   if (err) {
+  //     console.error('writeFile err', err)
+  //     return
+  //   }
+  //   //file written successfully
+  //   gulpAction('compilesass', res);
+  // });
 });
 
 
